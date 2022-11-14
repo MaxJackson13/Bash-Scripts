@@ -6,8 +6,7 @@ alias lweb='ip=$(ip a s tun0 | grep -oP "(\d{2}\.){3}\d{1,2}") && for i in $(ls 
 
 #creates a share named 'smb' serving from the current working directory on the host with username:password test:test.
 #on the client run 'net use x: \\yourip\smb /u:test test' to connect to the share from cmd.exe, then cd into x: 
-#Or from powershell run 'new-psdrive -psprovider filesystem -name x -root \\yourip\smb -credential $cred' with $cred a powershell credential block.
-
+#or from powershell run 'new-psdrive -psprovider filesystem -name x -root \\yourip\smb -credential $cred' with $cred a powershell credential block.
 alias smbserve='server=$(find / -iname "smbserver.py" 2>/dev/null| tail -1) && python3 $server -smb2support -username test -password test . smb'
 
 #quick nmap full port scan. Usage: qscan 'yourip'
@@ -19,4 +18,5 @@ j () {john "$1" --wordlist=rockyou.txt}
 #start netcat listen to receive reverse shell. Usage: listen 'port'
 listen () {nc -nvlp "$1"}
 
-
+#run default scripts and nmap version scan against the target ip. Depends on qscan alias above.
+fscan () {nmap -Pn -sCV -p $(qscan "$1" | cut -s -d/ -f1 - | grep -iv nmap | tr '\n' ',' | rev | cut -d, -f2- |rev) "$1"}
