@@ -1,5 +1,6 @@
-#find your public ip
 ```shellscript
+
+#find your public ip
 alias myip='curl ipinfo.io/ip'
 
 #starts python web server on port 80 and prints the wget command to download any file in the current working directory
