@@ -1,4 +1,4 @@
-```console
+```shell
 #find your public ip
 alias myip='curl ipinfo.io/ip'
 
