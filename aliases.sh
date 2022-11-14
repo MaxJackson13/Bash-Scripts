@@ -1,5 +1,3 @@
-```shellscript
-
 #find your public ip
 alias myip='curl ipinfo.io/ip'
 
@@ -20,5 +18,5 @@ j () {john "$1" --wordlist=rockyou.txt}
 
 #start netcat listen to receive reverse shell. Usage: listen 'port'
 listen () {nc -nvlp "$1"}
-```
+
 
