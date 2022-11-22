@@ -7,7 +7,6 @@ IFS=$'\t'                                   # Set internal field separator to ta
 
 old=$(ps -eo cmd | grep -Ev '\[.*\]')       # Get initial processes selecting only the command + args (-o cmd). Grep out [] processes
                                             # which are children of the internal kernel thread (ppid 2) to reduce noise
-
 while true; do
   new=$(ps -eo cmd | grep -Ev '\[.*\]')     # Same as above 
   diff <(echo -e $old) <(echo -e $new)      # Diff old and new process lists to observe changes
