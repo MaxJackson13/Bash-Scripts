@@ -45,6 +45,15 @@ echo -e "${BLUE}#############################################$NC";
 echo "";
 find / -perm -2000 -printf %M\ \ \ "group="%g\ \ \ %p\\n 2>/dev/null | sed -e "s/root/${RED}&${NC}/g" | sed -e "s/$name/${GREEN}&${NC}/g"
 
+echo "";
+echo -e "${BLUE}#############################################$NC";
+echo "";
+echo -e "${GREEN}You never know  what's inside /opt & /tmp";
+echo "";
+echo -e "${BLUE}#############################################$NC";
+echo "";
+find /opt /tmp -maxdepth 1 -printf %M\ \ \ "user="%g\ \ \ %p\\n 2>/dev/null | sed -e "s/root/${RED}&${NC}/g" | sed -e "s/$name/${GREEN}&${NC}/g"
+
 for g in $groups; 
 do echo "";
 echo -e "${BLUE}#############################################$NC";
