@@ -5,7 +5,6 @@ BLUE="${C}[1;34m"
 YELLOW="${C}[1;33m"
 NC="${C}[0m"
 
-
 groups=$(groups)
 name=$(whoami)
 
@@ -54,6 +53,16 @@ echo -e "${BLUE}#############################################$NC";
 echo "";
 find /opt /tmp -maxdepth 1 -printf %M\ \ \ "user="%g\ \ \ %p\\n 2>/dev/null | sed -e "s/root/${RED}&${NC}/g" | sed -e "s/$name/${GREEN}&${NC}/g"
 
+echo "";
+echo -e "${BLUE}#############################################$NC";
+echo "";
+echo -e "${GREEN}Searching for non-system/non-application backups";
+echo "";
+echo -e "${BLUE}#############################################$NC";
+echo "";
+find / -type f \( -iname '*backup*' -o -iname '*.old' -o -iname '*.bak' -o -iname '*.swp' -o -iname '*.tmp' \) 2>/dev/null | grep -v '/usr/lib\|/var/lib\|/usr/share'
+ -printf %M\ \ \ "user="%g\ \ \ %p\\n 2>/dev/null | sed -e "s/root/${RED}&${NC}/g" | sed -e "s/$name/${GREEN}&${NC}/g"
+
 for g in $groups; 
 do echo "";
 echo -e "${BLUE}#############################################$NC";
@@ -88,6 +97,7 @@ echo -e "${BLUE}#############################################$NC";
 echo "";
 
 getcap -r / 2>/dev/null | sed -e "s/cap_setuid\|cap_setgid\|cap_chown\|cap_sys_admin\|cap_dac_override/${RED}&${NC}/g"
+
 
 
 
