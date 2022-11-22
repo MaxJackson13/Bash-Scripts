@@ -31,6 +31,6 @@ done
 # And back in the first terminal we see
 #
 # ┌──(kali㉿kali)-[~]
-# └─$ bash proc.sh
+# └─$ bash ProcessMonitor.sh
 # 99d98
 # < nc -nvlp 7777
