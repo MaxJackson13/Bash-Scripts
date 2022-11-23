@@ -1,3 +1,5 @@
+# Lightweight script to automate the low hanging fruit I first look for after compromising a *nix host (on CTFs!)
+
 C=$(printf '\033')
 RED="${C}[1;31m"
 GREEN="${C}[1;32m"
